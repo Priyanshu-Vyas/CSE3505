@@ -1,0 +1,69 @@
+---
+title: "Lab2_29-07-22"
+output: html_document
+---
+### Reg. No: 20BCE1685
+### Name: PRIYANSHU VYAS
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+***
+
+Create a data frame by considering 5 students and 4 events. Each event has a maximum score of 10. If a student participates in an event, its entry contains the value and 0 otherwise.
+
+***
+```{r}
+
+Event <- data.frame(stname=c("Aditya","Pratik","Kishore","Aniket","Himanshu"),event1=c(0,10,1,3,4),event2=c(0,10,1,3,4),event3=c(0,10,1,3,4),event4=c(0,10,1,3,4))
+
+```
+***
+
+View the contents of the data frame.
+
+***
+```{r}
+Event
+```
+***
+
+Find the Total score of each participant.
+
+***
+```{r}
+rs <- rowSums(Event[2:5])
+rs
+```
+***
+
+Append a column to include the total score of the participants and the view the data frame.
+
+***
+```{r}
+Event$Total <- rs
+Event
+```
+***
+
+Find the maximum score and display the name of the participant who scored 
+
+***
+```{r}
+Event$stname[which.max(Event$Total)]
+```
+***
+
+Find the avg of the events and append as a new row in the data frame.
+
+***
+```{r}
+rbind(Event,
+c("Avg",mean(Event$event1),
+mean(Event$event2),
+mean(Event$event3),
+mean(Event$event4),
+mean(Event$Total))
+)
+```
+
