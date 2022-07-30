@@ -1,0 +1,123 @@
+---
+title: "Lab1"
+output: html_document
+date: "2022-07-22"
+---
+
+## Exercise 1: Basic Data Types in R
+
+ Name : PRIYANSHU VYAS
+
+ REG NO. : 20BCE1685
+ 
+---
+
+Convert TRUE to an integer
+
+```{r}
+a <- TRUE
+as.integer(a)
+```
+
+---
+
+Assign a string to a variable and extract any substring.
+
+```{r}
+v <- "HELLO WORLD!!"
+substr(v,4,7)
+```
+
+---
+
+Assign an integer value to two variables p & q
+
+```{r}
+p <- 4
+q <- 7
+```
+
+---
+
+Use R as a calculator to do basic arithmetic operations on p &q and store each result in different variables.
+
+```{r}
+A <- p+q
+S <- p-q
+M <- p*q
+D <- p/q
+A;S;M;D
+```
+
+---
+
+Calculate sqrt(p) and perform log2 transformation on the result.
+
+```{r}
+sp <- sqrt(p)
+log2(sp)
+```
+
+---
+
+Calculate the 10-based logarithm of 100 and multiply the result with cosine of π.
+
+```{r}
+log10(100)*cos(pi)
+```
+
+---
+
+Create a vector ‘x’ using : operator from -2 to 2.
+
+```{r}
+x <- -2:2
+x
+```
+
+---
+
+Create a vector ‘y’ using c() with values 1 to 10. What is the dimension of y and length of y.
+
+```{r}
+y <- c(1:10)
+y;dim(y);length(y)
+```
+
+---
+
+Create two vectors small and caps with first 5 alphabets in lower case and last 5 alphabets in upper case respectively. Bind it row and column wise.
+
+```{r}
+small <- c('a','b','c','d','e')
+caps <- c('V','W','X','Y','Z')
+rbind(small,caps);cbind(small,caps)
+```
+
+---
+
+Create a matrix M=[[1,4,3],[-2,8,6],[5,-1,7]]  and find  MxMxM.
+
+```{r}
+M <- matrix(data = c(1,4,3,-2,8,6,5,-1,7),3,3,T)
+M;M%*%M%*%M
+```
+
+---
+
+Find the result of element wise multiplication of M by M.
+
+```{r}
+M*M
+```
+
+
+---
+
+Find the transpose, inverse and determinant of M.
+
+```{r}
+t(M);solve(M);det(M)
+```
+
+---
