@@ -1,0 +1,32 @@
+Part 1: Creating a Data Frame
+1. Create a data frame by considering 5 students and 4 events. Each event has a maximum score of 10. If a student participates in an event, its entry contains the score value and 0 otherwise.
+
+2. View the contents of the data frame.
+
+3. Find the total score of each participant.
+
+4. Append a column to include the total score of the participants and view the data frame.
+
+5. Find the maximum score and display the name of the participant who scored it.
+
+6. Compute the average score of each event and append it as a new row in the data frame.
+
+
+Part 2: Indexing and Slicing data frames
+7. Read the content of ‘Events.csv’ in a data frame and view it.
+
+8. Access the scores of participants in event2 using the column name.
+
+9. Use index number to retrieve the same data.
+
+10. Extract the score of third participant in event3.
+
+11. Extract the scores of the first and second participant in all the events.
+
+12. Display the names and total scores of all participants.
+
+13. Make the column “name” as the row index of the data frame.
+
+14. Display the names of the students participated in event3.
+
+15. Obtain the names whose total score is above its average.

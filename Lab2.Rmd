@@ -1,64 +1,64 @@
 ---
-title: "Lab2_29-07-22"
+title: "Lab2"
 output: html_document
+date: "2022-07-29"
 ---
-### Reg. No: 20BCE1685
-### Name: PRIYANSHU VYAS
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
-***
+Reg. No: 20BCE1685
+
+Name: PRIYANSHU VYAS
+
+
+### Part 1: Creating a Data Frame
+
+---
 
 Create a data frame by considering 5 students and 4 events. Each event has a maximum score of 10. If a student participates in an event, its entry contains the value and 0 otherwise.
 
-***
 ```{r}
-
 Event <- data.frame(stname=c("Aditya","Pratik","Kishore","Aniket","Himanshu"),event1=c(0,10,1,3,4),event2=c(0,10,1,3,4),event3=c(0,10,1,3,4),event4=c(0,10,1,3,4))
-
 ```
-***
+
+---
 
 View the contents of the data frame.
 
-***
 ```{r}
 Event
 ```
-***
+
+---
 
 Find the Total score of each participant.
 
-***
 ```{r}
 rs <- rowSums(Event[2:5])
 rs
 ```
-***
+
+---
 
 Append a column to include the total score of the participants and the view the data frame.
 
-***
 ```{r}
 Event$Total <- rs
 Event
 ```
-***
+
+---
 
 Find the maximum score and display the name of the participant who scored 
 
-***
 ```{r}
 Event$stname[which.max(Event$Total)]
 ```
-***
+
+---
 
 Find the avg of the events and append as a new row in the data frame.
 
-***
 ```{r}
-rbind(Event,
+Event <- rbind(Event,
 c("Avg",mean(Event$event1),
 mean(Event$event2),
 mean(Event$event3),
@@ -67,3 +67,102 @@ mean(Event$Total))
 )
 ```
 
+---
+
+### Part 2: Indexing and Slicing data frames
+
+---
+
+Read the content of ‘Events.csv’ in a data frame and view it.
+
+```{r}
+write.csv(Event,"Event.csv")
+read.csv("Event.csv")
+```
+
+---
+
+Access the scores of participants in event2 using the column name.
+
+```{r}
+Event$event2
+```
+
+---
+
+Use index number to retrieve the same data.
+
+```{r}
+Event[3]
+```
+
+---
+
+Extract the score of third participant in event3.
+
+```{r}
+Event$event3[3]
+```
+
+---
+
+Extract the scores of the first and second participant in all the events.
+
+```{r}
+Event[1:2,]
+```
+
+---
+
+Display the names and total scores of all participants.
+
+```{r}
+Event
+```
+
+---
+
+Make the column “name” as the row index of the data frame.
+
+```{r}
+row.names(Event) <- colnames(Event)
+Event
+```
+
+---
+
+Display the names of the students participated in event3.
+
+```{r}
+i<-0
+for (score in Event$event3) {
+  i<-i+1
+  if(score!=0)
+  {
+     print(Event$stname[i]) 
+  }
+  if(i==5)break
+}
+```
+
+---
+
+Obtain the names whose total score is above its average.
+
+```{r}
+totalScore <- Event$Total
+i <- 0
+avg <- Event$Total[6]
+for(score in totalScore)
+{
+  i<-i+1
+    if(score>avg)
+    {
+      print(Event$stname[i])
+    }
+    
+  if(i==5)break
+}
+```
+
+---
