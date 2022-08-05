@@ -1,0 +1,127 @@
+---
+title: "Lab3"
+author: "PRIYANSHU VYAS 20BCE1685"
+date: "05/08/2022"
+output: html_document
+---
+***
+    1. Install the package MASS.
+***
+```{r}
+install.packages("MASS")
+```
+***
+    2. Import the package MASS.
+***
+```{r}
+library(MASS)
+data("survey")
+```
+***
+    3. Display the structure of the data survey.
+***
+```{r}
+str(survey)
+```
+***
+    4. Check the class and type of the data set survey in MASS.
+***
+```{r}
+class(survey)
+typeof(survey)
+```
+***
+    5. Get the number of rows and columns of the survey data frame.
+***
+```{r}
+nrow(survey);ncol(survey)
+```
+***
+    6. Get the dimension of the survey data frame.
+***
+```{r}
+dim(survey)
+```
+***
+    7. Provide the statistical summary of the data frame.
+***
+```{r}
+summary(survey)
+```
+***
+    8. Display the column names of the survey data frame
+***
+```{r}
+colnames(survey)
+```
+***
+    9. Retrieve the top 3 rows from the data frame.
+***
+```{r}
+head(survey,3)
+```
+***
+    10. Extract the bottom 2 rows from the data frame.
+***
+```{r}
+tail(survey,2)
+```
+***
+    11. Filter all male left handers.	
+***
+```{r}
+Male_LH <- subset(survey,Sex=="Male" &W.Hnd=="Left")
+Male_LH
+```
+***
+    12. Display all female right handers who keep right on top while clapping.
+***
+```{r}
+Female_RH <- subset(survey,Sex=="Female" &W.Hnd=="Right" &Clap=="Right")
+Female_RH
+```
+***
+    13. Display all students who never exercise.
+***
+```{r}
+No_Exer <- subset(survey,Exer=="None")
+No_Exer
+```
+***
+    14. Display only the gender, age and writing hand of the students.
+***
+```{r}
+subset(survey,select = c(Sex,Age,W.Hnd))
+```
+***
+    15. Display the age, pulse rate and writing hand span of female left handers.
+***
+```{r}
+subset(survey,Sex=="Female" &W.Hnd=="Left",select = c(Age,Pulse,W.Hnd))
+```
+***
+    16. Introduce a new column hand_span which contains the value as difference between the span of writing hand and non-writing hand and display it along with gender, writing hand and non-writing hand span.
+***
+```{r}
+survey$hand_span <- survey$Wr.Hnd-survey$NW.Hnd
+subset(survey,select = c(hand_span,Sex,Wr.Hnd,NW.Hnd))
+```
+***
+    17. Display the average writing span of male and female left handers.
+***
+```{r}
+Avgm <- subset(survey,Sex=="Male" &W.Hnd=="Left",select = Wr.Hnd)
+mean(Avgm$Wr.Hnd)
+Avgm <- subset(survey,Sex=="Female" &W.Hnd=="Left",select = Wr.Hnd)
+mean(Avgm$Wr.Hnd)
+```
+***
+    18. Find the maximum pulse rate of male left and right handers.
+***
+```{r}
+MAX <- subset(survey,Sex=="Male",select = Pulse)
+MAX <- na.omit(MAX)
+max(MAX)
+```
+
+---
