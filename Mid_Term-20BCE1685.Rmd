@@ -1,0 +1,157 @@
+---
+title: "Assessment 1"
+output: 
+  html_document: 
+    fig_height: 4
+    highlight: pygments
+    theme: spacelab
+---
+### Reg. No: 20BCE1685
+
+### Name: Priyanshu Vyas
+
+### Frame any 10 questions for data manipulation
+
+
+```{r}
+library(MASS)
+data(biopsy)
+```
+
+
+* * *
+
+    1. Display the str and summary of the dataset.
+
+* * *
+
+```{r}
+str(biopsy);
+summary(biopsy);
+```
+
+* * *
+
+    2. Display first six and last six entries of the given dataset.
+
+* * *
+
+```{r}
+head(biopsy);
+tail(biopsy);
+```
+
+
+
+* * *
+
+    3. Write and read(in a variable) the dataset in csv format(in project directory).
+
+* * *
+
+```{r}
+setwd("/home/student/20BCE1685");
+write.csv(biopsy,'dataset.csv');
+df <- read.csv('dataset.csv');
+```
+
+
+
+* * *
+
+    4. Check for the NA values in dataset and print the rows containing NA values and omit them.
+
+* * *
+
+```{r}
+sum(is.na(biopsy));
+biopsy[!complete.cases(biopsy),];
+biopsy <- na.omit(biopsy);
+sum(is.na(biopsy));
+```
+
+
+
+* * *
+
+    5. Display all the unique classes from the dataset and print no of patients in each class.
+
+* * *
+
+```{r}
+library(dplyr)
+unique(biopsy$class);
+biopsy %>%
+  group_by(class) %>%
+  summarise(count = n())
+```
+
+
+
+* * *
+
+    6. Display all the rows which are having V1 greater than five and class equal to benign.
+
+* * *
+
+```{r}
+subset(biopsy,V1>5&class=='benign');
+```
+
+
+
+* * *
+
+    7. Calculate the sum of all the nine attributes(V1..V9) given and add it in the dataframe.
+
+* * *
+
+```{r}
+biopsy$Attr <- rowSums(biopsy[2:10])
+head(biopsy)
+```
+
+
+
+* * *
+
+    8. Display all the ID's,class and Attr which has class equal to malignant and Atrr is greater than 35.
+
+* * *
+
+```{r}
+head(subset(biopsy,class=='malignant'&Attr>35,select = c(ID,class,Attr)));
+```
+
+
+
+* * *
+
+    9. Display all the duplicate IDs.
+
+* * *
+
+```{r}
+counts <- biopsy %>%
+    group_by(ID) %>%
+    summarise(
+      count = n()
+      )
+subset(counts,select=ID,count>1)
+```
+
+
+
+* * *
+
+    10. Display the ID and mean of all nine attributes by grouping ID's.
+
+* * *
+
+```{r}
+biopsy %>%
+    group_by(ID) %>%
+    summarise(
+      select = rowMeans(biopsy[2:10])
+      )
+```
